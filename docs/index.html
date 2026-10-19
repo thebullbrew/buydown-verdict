@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Buydown Verdict — Points or Patience?</title>
+<meta name="description" content="Permanent points vs a seller-paid 2-1 buydown: break-even month, true net benefit, and which use of a seller credit actually wins.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="theme-color" content="#0D0D0B">
+<style>
+:root{--bg:#0D0D0B;--surface:#161614;--surface2:#1d1d1a;--text:#EFEAD8;--muted:#b7b09a;--accent:#C9A227;--accent2:#6E5A1F;--line:#3a3524;--bad:#d97a6a;--good:#9fc48a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,'Times New Roman',serif;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 18px 64px}
+.eyebrow{text-transform:uppercase;letter-spacing:.32em;font-size:.72rem;color:var(--accent);text-align:center;margin:26px 0 10px}
+h1{text-align:center;font-size:clamp(2.2rem,6vw,4rem);line-height:1.02;margin:0;font-weight:700;letter-spacing:.01em}
+.sub{text-align:center;color:var(--muted);font-style:italic;max-width:680px;margin:14px auto 8px;font-size:1.05rem}
+.rule{border:none;border-top:3px double var(--accent);margin:22px auto;max-width:760px}
+.rule.thin{border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);outline:3px double var(--accent2);outline-offset:-7px;padding:24px 22px;margin:16px 0}
+.card h2{text-transform:uppercase;letter-spacing:.22em;font-size:.95rem;color:var(--accent);margin:0 0 16px}
+label{display:block;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--muted);margin:16px 0 6px}
+label:first-of-type{margin-top:0}
+input[type=number],input[type=text]{width:100%;background:#0a0a09;color:var(--text);border:1px solid var(--line);padding:11px 12px;font-family:Georgia,serif;font-size:1.05rem}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.rangeval{font-size:1.35rem;color:var(--accent);font-weight:700}
+.hint{font-size:.85rem;color:var(--muted);font-style:italic;margin-top:4px}
+.hero{text-align:center;padding:30px 22px}
+.verdict{display:inline-block;border:3px double var(--accent);color:var(--accent);padding:10px 22px;text-transform:uppercase;letter-spacing:.24em;font-weight:700;font-size:1rem;margin:8px 0 14px}
+.big{font-size:clamp(2.6rem,7vw,4.4rem);color:var(--accent);line-height:1;font-weight:700;font-variant-numeric:tabular-nums}
+.big small{font-size:1.1rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}@media(max-width:700px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{background:var(--surface2);border:1px solid var(--line);padding:14px}
+.kpi .v{font-size:1.55rem;color:var(--text);font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .k{text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;color:var(--muted);margin-top:4px}
+.pos{color:var(--good)!important}.neg{color:var(--bad)!important}
+table{width:100%;border-collapse:collapse;font-size:.95rem;font-variant-numeric:tabular-nums}
+th{text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--accent);text-align:right;padding:9px 8px;border-bottom:3px double var(--accent)}
+th:first-child,td:first-child{text-align:left}
+td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:right}
+tr.hl td{background:#24210f;color:var(--accent);font-weight:700}
+button{background:var(--accent);color:#111008;border:none;padding:13px 20px;font-family:Georgia,serif;font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.82rem;cursor:pointer;width:100%;margin-top:12px}
+button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+button:active{transform:translateY(1px)}
+.saved div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:9px 0;font-size:.92rem}
+.saved button{width:auto;padding:6px 12px;margin:0}
+.note{font-size:.9rem;color:var(--muted)} .note b{color:var(--text)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:34px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--accent);color:#111008;padding:10px 18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem;display:none;z-index:9}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">◆ The Daily Tool ◆ For Homebuyers &amp; Loan Shoppers ◆</p>
+  <h1>The Buydown<br>Verdict</h1>
+  <p class="sub">Points are a bet on how long you keep the loan. Most buyers place it blind. Price the bet — permanent points against a seller-paid 2-1 buydown — and take only the side that pays you back.</p>
+  <hr class="rule">
+
+  <div class="grid">
+    <section class="card">
+      <h2>I · The Loan</h2>
+      <label>Loan amount ($)</label>
+      <input type="number" id="loan" value="450000" min="10000" step="5000">
+      <label>Rate with no points (%)</label>
+      <input type="number" id="baseRate" value="7.00" min="1" max="15" step="0.125">
+      <label>Loan term (years)</label>
+      <input type="number" id="term" value="30" min="5" max="30" step="1">
+      <label>Seller credit on the table ($) — optional</label>
+      <input type="number" id="credit" value="10000" min="0" step="500">
+      <p class="hint">A seller credit is not free money until you spend it on the right thing. Section III settles where it earns most.</p>
+    </section>
+
+    <section class="card">
+      <h2>II · The Bet</h2>
+      <label>Points to buy — <span class="rangeval" id="pointsVal">2.00</span></label>
+      <input type="range" id="points" min="0" max="4" step="0.25" value="2">
+      <p class="hint">One point = 1% of the loan, paid at closing.</p>
+      <label>Rate cut per point (%)</label>
+      <input type="number" id="cutPerPoint" value="0.25" min="0.05" max="0.5" step="0.05">
+      <p class="hint">The classic quote is 0.25% per point. If your lender offers less, the bet gets worse fast — enter the real number.</p>
+      <label>Years you'll keep this loan — <span class="rangeval" id="holdVal">7</span></label>
+      <input type="range" id="hold" min="1" max="30" step="1" value="7">
+      <p class="hint">Until you sell <i>or refinance</i>. A refi kills a buydown exactly like a sale does. Be honest — most loans die young.</p>
+    </section>
+  </div>
+
+  <section class="card hero">
+    <h2>The Verdict</h2>
+    <div><span class="verdict" id="verdict">—</span></div>
+    <div class="big"><small>Net benefit at your hold period</small><span id="netBenefit">—</span></div>
+    <p class="note" id="verdictLine" style="max-width:700px;margin:14px auto 0"></p>
+    <div class="kpis">
+      <div class="kpi"><div class="v" id="boughtRate">—</div><div class="k">Rate after points</div></div>
+      <div class="kpi"><div class="v" id="cost">—</div><div class="k">Cost of points</div></div>
+      <div class="kpi"><div class="v" id="monthlySave">—</div><div class="k">Saved per month</div></div>
+      <div class="kpi"><div class="v" id="breakeven">—</div><div class="k">Break-even</div></div>
+      <div class="kpi"><div class="v" id="payBase">—</div><div class="k">Payment · no points</div></div>
+      <div class="kpi"><div class="v" id="payBought">—</div><div class="k">Payment · with points</div></div>
+    </div>
+    <p class="note" style="margin-top:16px">Net benefit counts every monthly saving <b>plus</b> the extra principal you build at the lower rate, minus the points. No lender brochure math.</p>
+  </section>
+
+  <section class="card">
+    <h2>III · Spend the Seller Credit: Permanent vs 2-1</h2>
+    <p class="note">A <b>2-1 buydown</b> cuts your rate 2% in year one and 1% in year two, then it's gone. Its cost is simply the payments someone else makes for you — which is why sellers love funding it and why it only wins if you leave or refinance early.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v" id="tYear1">—</div><div class="k">Year 1 payment (2-1)</div></div>
+      <div class="kpi"><div class="v" id="tYear2">—</div><div class="k">Year 2 payment (2-1)</div></div>
+      <div class="kpi"><div class="v" id="tCost">—</div><div class="k">Total 2-1 subsidy cost</div></div>
+      <div class="kpi"><div class="v" id="tValue">—</div><div class="k">2-1 value to you (your hold)</div></div>
+      <div class="kpi"><div class="v" id="pValue">—</div><div class="k">Same credit in points earns</div></div>
+      <div class="kpi"><div class="v" id="creditWinner">—</div><div class="k">Better use of the credit</div></div>
+    </div>
+    <p class="note" id="creditLine" style="margin-top:14px"></p>
+  </section>
+
+  <section class="card">
+    <h2>IV · Every Point, Priced</h2>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>Points</th><th>Rate</th><th>Payment</th><th>Cost</th><th>Break-even</th><th>Net at your hold</th></tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table></div>
+    <p class="hint">Watch the break-even stretch as points pile up. The fourth point is usually a donation to the lender.</p>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>V · Keep the Case</h2>
+      <label>Label this scenario</label>
+      <input type="text" id="saveName" placeholder="e.g. Maple St — lender A quote">
+      <button id="saveBtn">Save scenario</button>
+      <button class="ghost" id="copyBtn">Copy summary</button>
+      <div class="saved" id="savedList" style="margin-top:14px"></div>
+    </section>
+    <section class="card">
+      <h2>VI · The Method</h2>
+      <p class="note"><b>1.</b> Points only pay if you outlive the break-even month. Sell or refinance one month early and you funded the lender's margin.</p>
+      <p class="note"><b>2.</b> Rate cut per point is negotiable and varies by lender and day. A 0.125% cut per point nearly doubles your break-even — always enter the quoted cut, never the folklore.</p>
+      <p class="note"><b>3.</b> Seller credit changes the bet: points bought with the seller's money can win even on a short hold, and a 2-1 is pure gift if the seller funds it — compare both before you sign, not after.</p>
+    </section>
+  </div>
+
+  <hr class="rule thin">
+  <footer>The Buydown Verdict · A daily finance &amp; real-estate tool · Estimates only — your lender's Loan Estimate is the binding document. Everything runs on your device; nothing is sent anywhere.</footer>
+</div>
+<div class="toast" id="toast">Copied</div>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const fmt=n=>{const s=n<0?"-$":"$";return s+Math.abs(Math.round(n)).toLocaleString("en-US");};
+function pmt(P,annualPct,termYrs){const r=annualPct/100/12,n=termYrs*12;if(r<=0)return P/n;const f=Math.pow(1+r,n);return P*r*f/(f-1);}
+function balance(P,annualPct,termYrs,months){const r=annualPct/100/12;if(r<=0)return Math.max(0,P-pmt(P,annualPct,termYrs)*months);const pay=pmt(P,annualPct,termYrs);const f=Math.pow(1+r,months);return Math.max(0,P*f-pay*(f-1)/r);}
+function inputs(){return{loan:+$("loan").value||0,base:+$("baseRate").value||0,term:+$("term").value||30,credit:+$("credit").value||0,points:+$("points").value||0,cut:+$("cutPerPoint").value||0.25,hold:+$("hold").value||7};}
+function permanent(v,pts){const rate=Math.max(0.1,v.base-pts*v.cut);const cost=pts/100*v.loan;const payB=pmt(v.loan,rate,v.term),pay0=pmt(v.loan,v.base,v.term);const months=Math.min(v.hold*12,v.term*12);const save=pay0-payB;const be=save>0?cost/save:Infinity;const equity=balance(v.loan,v.base,v.term,months)-balance(v.loan,rate,v.term,months);const net=save*months+equity-cost;return{rate,cost,payB,pay0,save,be,net,equity};}
+function calc(){
+  const v=inputs();$("pointsVal").textContent=v.points.toFixed(2);$("holdVal").textContent=v.hold;
+  const r=permanent(v,v.points);
+  $("boughtRate").textContent=r.rate.toFixed(3)+"%";$("cost").textContent=fmt(r.cost);
+  $("monthlySave").textContent=fmt(r.save)+"/mo";$("payBase").textContent=fmt(r.pay0);$("payBought").textContent=fmt(r.payB);
+  $("breakeven").textContent=isFinite(r.be)?(r.be<1?"Instant":Math.ceil(r.be)+" months"):"Never";
+  const netEl=$("netBenefit");netEl.textContent=fmt(r.net);netEl.className=r.net>=0?"pos":"neg";
+  let verdict,line;
+  if(v.points===0){verdict="NO BET PLACED";line="Zero points selected. Slide the bet up and watch the break-even — or check the table below for the point count that actually pays.";}
+  else if(r.be<=v.hold*12*0.6){verdict="◆ Buy the Points ◆";line="Break-even lands at month "+Math.ceil(r.be)+", well inside your "+v.hold+"-year hold. The bet pays, with room for life to change its mind.";}
+  else if(r.be<=v.hold*12){verdict="Close Call — Proceed Carefully";line="You do recover the cost — at month "+Math.ceil(r.be)+" of a "+(v.hold*12)+"-month hold. One early refinance wipes the win. Only take it if this loan is truly staying.";}
+  else{verdict="Skip the Points";line="Break-even is month "+Math.ceil(r.be)+", but this loan only lives "+(v.hold*12)+" months in your plan. You would pay "+fmt(r.cost)+" to save "+fmt(r.save*(v.hold*12)+r.equity)+". Keep the cash.";}
+  $("verdict").textContent=verdict;$("verdictLine").innerHTML=line;
+  // 2-1 temporary
+  const p1=pmt(v.loan,Math.max(0.1,v.base-2),v.term),p2=pmt(v.loan,Math.max(0.1,v.base-1),v.term);
+  const sub=(r.pay0-p1)*12+(r.pay0-p2)*12;
+  const months=v.hold*12;const tVal=(r.pay0-p1)*Math.min(12,months)+(r.pay0-p2)*Math.max(0,Math.min(12,months-12));
+  // permanent value if the same credit buys points: credit buys credit/loan*100 points
+  const ptsFromCredit=v.loan>0?Math.min(4,(v.credit/v.loan)*100):0;
+  const rp=permanent(v,ptsFromCredit);const pVal=v.credit>0?rp.save*months+rp.equity:0;
+  $("tYear1").textContent=fmt(p1);$("tYear2").textContent=fmt(p2);$("tCost").textContent=fmt(sub);
+  $("tValue").textContent=fmt(tVal);$("pValue").textContent=fmt(pVal);
+  const winner=v.credit<=0?"No credit entered":(tVal>=pVal?"2-1 Buydown":"Permanent Points");
+  $("creditWinner").textContent=winner;
+  $("creditLine").innerHTML=v.credit<=0?"Enter a seller credit above to see which spend wins.":
+    ("Your <b>"+fmt(v.credit)+"</b> credit funds the 2-1 buydown ("+fmt(sub)+" — "+(v.credit>=sub?"fully covered":"short by "+fmt(sub-v.credit))+") <b>or</b> buys about <b>"+ptsFromCredit.toFixed(2)+" points</b> permanently. Over your "+v.hold+"-year hold the <b>"+winner+"</b> puts more in your pocket. Short hold or an early refi coming? The 2-1. Settled in for years? Points.");
+  // table
+  let rows="";[0,0.5,1,1.5,2,2.5,3,3.5,4].forEach(pts=>{const x=permanent(v,pts);const hl=Math.abs(pts-v.points)<0.01?" class='hl'":"";rows+="<tr"+hl+"><td>"+pts.toFixed(1)+"</td><td>"+x.rate.toFixed(3)+"%</td><td>"+fmt(x.payB)+"</td><td>"+fmt(x.cost)+"</td><td>"+(pts===0?"—":(isFinite(x.be)?Math.ceil(x.be)+" mo":"Never"))+"</td><td>"+fmt(x.net)+"</td></tr>";});
+  $("tableBody").innerHTML=rows;
+  return{v,r,winner,tVal,pVal,sub};
+}
+let last=null;
+function refresh(){last=calc();}
+["loan","baseRate","term","credit","points","cutPerPoint","hold"].forEach(id=>{$(id).addEventListener("input",refresh);});
+function toast(msg){const t=$("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",1800);}
+const KEY="buydown-verdict-saves";
+function saves(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+function renderSaves(){const list=saves();$("savedList").innerHTML=list.length?list.map((s,i)=>"<div><span><b>"+s.name+"</b> · "+s.summary+"</span><button data-i='"+i+"'>Load</button></div>").join(""):"<p class='note'>No saved scenarios yet.</p>";
+  $("savedList").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{const s=saves()[+b.dataset.i];if(!s)return;Object.keys(s.data).forEach(k=>{if($(k))$(k).value=s.data[k];});refresh();toast("Loaded");}));}
+$("saveBtn").addEventListener("click",()=>{const v=inputs();const name=$("saveName").value.trim()||("Scenario "+(saves().length+1));const arr=saves();arr.push({name,summary:fmt(last.r.cost)+" pts · BE "+(isFinite(last.r.be)?Math.ceil(last.r.be)+"mo":"never")+" · net "+fmt(last.r.net),data:{loan:v.loan,baseRate:v.base,term:v.term,credit:v.credit,points:v.points,cutPerPoint:v.cut,hold:v.hold}});localStorage.setItem(KEY,JSON.stringify(arr));renderSaves();toast("Saved");});
+$("copyBtn").addEventListener("click",()=>{const v=inputs(),r=last.r;const txt=["THE BUYDOWN VERDICT","Loan "+fmt(v.loan)+" at "+v.base.toFixed(3)+"% base, "+v.term+"yr","Points: "+v.points.toFixed(2)+" (cut "+v.cut.toFixed(2)+"%/pt) cost "+fmt(r.cost),"Rate after points: "+r.rate.toFixed(3)+"% · Payment "+fmt(r.pay0)+" -> "+fmt(r.payB)+" (saves "+fmt(r.save)+"/mo)","Break-even: "+(isFinite(r.be)?Math.ceil(r.be)+" months":"never")+" · Hold: "+v.hold+" yrs · Net benefit: "+fmt(r.net),"Verdict: "+$("verdict").textContent,"2-1 buydown subsidy: "+fmt(last.sub)+" · Better use of seller credit: "+last.winner].join("\n");
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(()=>toast("Summary copied"));}else{toast("Copy unavailable");}});
+refresh();renderSaves();
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{});}
+</script>
+</body>
+</html>
